@@ -1,0 +1,33 @@
+int[][] createRandomSquareMatrix(int size, int minVal, int maxVal) {
+  int[][] matrix = new int[size][size];
+  
+  for (int i = 0; i < size; i++) {
+    for (int j = 0; j < size; j++) {
+      matrix[i][j] = (int) random(minVal, maxVal + 1);
+    }
+  }
+  
+  return matrix;
+}
+
+void setup() {
+  int matrixSize = 5;     // Tamanho da matriz (5x5 no exemplo)
+  int minValue = 3;       // Valor mínimo para os elementos
+  int maxValue = 9;     // Valor máximo para os elementos
+  
+  int[][] randomMatrix = createRandomSquareMatrix(matrixSize, minValue, maxValue);
+  
+  size(800, 800); // Tamanho da janela
+  
+  int cellSize = width / matrixSize;
+  
+  for (int i = 0; i < matrixSize; i++) {
+    for (int j = 0; j < matrixSize; j++) {
+      int value = randomMatrix[i][j];
+      
+      fill(0); // Cor do texto
+      textAlign(CENTER, CENTER);
+      text(value, j * cellSize + cellSize/2, i * cellSize + cellSize/2);
+    }
+  }
+}
